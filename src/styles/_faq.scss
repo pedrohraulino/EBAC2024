@@ -1,0 +1,92 @@
+@use 'variaveis';
+
+.faq {
+    padding: 5.6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    background-color: rgba(variaveis.$titleColor, 1);
+
+    h3,
+    h2,
+    p {
+        color: #fff;
+    }
+
+    &__questions {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+        padding: 48px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, .5);
+        border-radius: 8px;
+
+        @media (max-width:768px) {
+            padding:16px;
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #fff;
+            border-radius: 8px;
+            padding: 24px;
+            gap: 0px;
+            transition: gap 0.5s ease-in-out;
+
+
+            &__question {
+                cursor: pointer;
+                display: block;
+                position: relative;
+
+                ::after {
+                    content: '+';
+                    position: absolute;
+                    top: 0;
+                    right: 24px;
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    font-size: 24px;
+                    transition: content 0.2s ease;
+                    /* Transição para o ícone */
+                }
+            }
+
+            &__awnser {
+                max-height: 0;
+                /* Inicialmente fechado */
+                opacity: 0;
+                overflow: hidden;
+                /* Esconde o conteúdo que excede o max-height */
+                transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+                /* Transições suaves */
+            }
+
+            &--is-open {
+                gap: 16px;
+                transition: gap 0.5s ease-in-out;
+
+                .faq__questions__item__question {
+                    ::after {
+                        content: '-';
+                        /* Altera o ícone de + para - */
+                    }
+                }
+
+                .faq__questions__item__awnser {
+                    opacity: 1;
+                    max-height: 1000px;
+                    /* Um valor maior, mas ainda limitado */
+                    overflow: visible;
+                    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+                    /* Transições suaves */
+                }
+            }
+        }
+    }
+}

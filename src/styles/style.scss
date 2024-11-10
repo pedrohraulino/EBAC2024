@@ -1,4 +1,9 @@
 @use 'hero';
+@use 'teams';
+@use 'team';
+@use 'faq';
+
+@use 'variaveis';
 
 * {
     box-sizing: border-box;
@@ -6,20 +11,17 @@
     font-family: sans-serif;
     padding: 0px;
     margin: 0px;
+    list-style: none;
 }
 
-$backgroudColor: #F8FAFE;
-$textColor: #383838;
-$titleColor: #8A2D5E;
-
 body {
-    background-color: $backgroudColor;
+    background-color: variaveis.$backgroudColor;
 }
 
 @mixin text($fontSize: 16px) {
     font-size: $fontSize ;
     line-height: 1.2em;
-    color: $textColor;
+    color: variaveis.$textColor;
 }
 
 .button {
@@ -37,6 +39,14 @@ body {
         cursor: pointer;
         background-color: #8A2D5E;
         box-shadow: 2px 2px 8px rgba($color: #202020, $alpha: .3);
+    }
+
+
+}
+
+@media (max-width:768px) {
+    .button {
+        max-width: 100%;
     }
 }
 
@@ -57,6 +67,6 @@ body {
 
     &--title {
         @include text(80px);
-        color: $titleColor;
+        color: variaveis.$titleColor;
     }
 }

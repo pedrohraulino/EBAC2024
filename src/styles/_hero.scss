@@ -6,39 +6,47 @@
     flex-direction: column;
     justify-content: center;
     gap: 48px;
-    position: relative; 
+    position: relative;
+
+    @media (max-width:768px) {
+        justify-content: space-around
+    }
 }
 
 .hero::before {
-    content: ""; 
-    position: absolute; 
+    content: "";
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-image: url('../../dist/img/hero.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    opacity: 0; 
-    animation: aparecerFondo 2s ease-in-out forwards;
-    z-index: -1; 
+    opacity: 0;
+    animation: opacityBackground 2s ease-in-out forwards;
+    z-index: -1;
+    @media (max-width:768px) {
+        background-size: cover;
+    }
 }
 
 
-@keyframes aparecerFondo {
+@keyframes opacityBackground {
     0% {
-        opacity: 0; 
+        opacity: 0;
     }
 
     100% {
-        opacity: 1; 
+        opacity: 1;
     }
 }
 
 .hero__content {
     display: flex;
     flex-direction: column;
+
 }
 
 .infos--tony {
@@ -46,4 +54,8 @@
     flex-direction: column;
     gap: 16px;
     max-width: 40%;
+
+    @media (max-width:768px) {
+        max-width: 100%
+    }
 }

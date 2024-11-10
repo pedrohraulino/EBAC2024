@@ -1,0 +1,66 @@
+@use 'variaveis';
+
+.teams {
+    padding: 2vw 5.6vw;
+
+    &__list {
+        display: none;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 24px 0px;
+
+        @media (max-width:768px) {
+            grid-template-columns: 1fr;
+        }
+
+        &--is-active {
+            display: grid;
+            animation: opacity .5s ease-in-out;
+
+        }
+
+        &__item {
+            padding: 8px;
+
+            img {
+                border-radius: 8px;
+                max-width: 100%;
+                aspect-ratio: 16 / 9;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &__tabs {
+        padding: 24px;
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        text-transform: uppercase;
+
+        &__button {
+            padding: 8px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 4px solid transparent;
+            transition: border-color .3s ease-in-out;
+            /* Transição suave para a borda */
+
+            &--is-active {
+                border-color: variaveis.$titleColor;
+                /* Altera a cor da borda */
+            }
+        }
+
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
