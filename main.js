@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const repositorios = document.getElementById('repositorios');
     const seguidores = document.getElementById('seguidores');
     const seguindo = document.getElementById('seguindo');
+    const link = document.getElementById('link');
 
     const url = 'https://api.github.com/users/pedrohraulino';
 
@@ -21,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
             repositorios.textContent = data.public_repos;
             seguidores.textContent = data.followers;
             seguindo.textContent = data.following;
+            link.href = `https://github.com/${data.login}`;
+
         })
         .catch(function (error) {
             console.error('Erro:', error);
